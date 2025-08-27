@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ron Schmidt - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: white;
+            font-size: 11pt;
+        }
+
+        .page {
+            width: 8.5in;
+            min-height: 11in;
+            margin: 0 auto;
+            padding: 0.75in;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                background: white;
+            }
+            .page {
+                width: 100%;
+                min-height: 100vh;
+                margin: 0;
+                padding: 0.5in;
+                box-shadow: none;
+                page-break-after: always;
+            }
+            .page:last-child {
+                page-break-after: avoid;
+            }
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+
+        .name {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #1f2937;
+            margin-bottom: 8px;
+        }
+
+        .title {
+            font-size: 12pt;
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .contact-info {
+            font-size: 10pt;
+            color: #666;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .contact-info span {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #2563eb;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 4px;
+            margin-bottom: 12px;
+        }
+
+        .experience-item {
+            margin-bottom: 16px;
+        }
+
+        .job-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 6px;
+        }
+
+        .job-title {
+            font-weight: bold;
+            font-size: 12pt;
+            color: #1f2937;
+        }
+
+        .company {
+            font-weight: 600;
+            color: #2563eb;
+            font-size: 11pt;
+        }
+
+        .location-date {
+            text-align: right;
+            font-size: 10pt;
+            color: #666;
+            line-height: 1.3;
+        }
+
+        .description {
+            margin-bottom: 6px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .achievements {
+            margin-left: 15px;
+        }
+
+        .achievements li {
+            margin-bottom: 3px;
+            font-size: 10pt;
+            line-height: 1.35;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .skill-category {
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 3px solid #2563eb;
+        }
+
+        .skill-category h4 {
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 6px;
+            font-size: 10pt;
+        }
+
+        .skill-list {
+            font-size: 9pt;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .certifications {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .cert-item {
+            background: #f0f9ff;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 10pt;
+        }
+
+        .cert-name {
+            font-weight: bold;
+            color: #1f2937;
+        }
+
+        .cert-date {
+            color: #666;
+            font-size: 9pt;
+        }
+
+        /* Portfolio Page Styles */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+
+        .project-card {
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 12px;
+            background: #fafafa;
+        }
+
+        .project-header {
+            margin-bottom: 8px;
+        }
+
+        .project-name {
+            font-weight: bold;
+            font-size: 11pt;
+            color: #1f2937;
+            margin-bottom: 2px;
+        }
+
+        .project-tagline {
+            font-style: italic;
+            color: #2563eb;
+            font-size: 9pt;
+            margin-bottom: 4px;
+        }
+
+        .project-status {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 8pt;
+            font-weight: bold;
+            color: white;
+        }
+
+        .status-complete { background: #059669; }
+        .status-pilot { background: #7c3aed; }
+        .status-adopted { background: #0891b2; }
+        .status-prototype { background: #ea580c; }
+        .status-in-progress { background: #2563eb; }
+
+        .project-description {
+            font-size: 9pt;
+            color: #555;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .project-bullets {
+            margin-bottom: 8px;
+        }
+
+        .project-bullets ul {
+            margin-left: 12px;
+            font-size: 8pt;
+            color: #666;
+        }
+
+        .project-bullets li {
+            margin-bottom: 2px;
+            line-height: 1.35;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3px;
+            margin-top: 6px;
+        }
+
+        .tech-tag {
+            background: #e5e7eb;
+            color: #374151;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 8pt;
+            font-weight: 500;
+        }
+
+        .summary {
+            background: #f0f9ff;
+            border-left: 4px solid #2563eb;
+            padding: 12px;
+            margin-bottom: 20px;
+            font-size: 10pt;
+            line-height: 1.4;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        @media print {
+            /* soften header and tighten spacing */
+            .header { 
+                border-bottom: 1px solid #e5e7eb; 
+                margin-bottom: 14px; 
+                padding-bottom: 10px; 
+            }
+
+            /* remove decorative summary box in print */
+            .summary { 
+                background: none; 
+                border: 0; 
+                padding: 0; 
+                margin-bottom: 12px; 
+            }
+
+            /* single-column flow for readability */
+            .two-column { 
+                grid-template-columns: 1fr; 
+                gap: 12px; 
+            }
+
+            /* tone down page-2 noise */
+            .project-status, .tech-tags { 
+                display: none !important; 
+            }
+            
+            /* keep max 2 bullets per project */
+            .project-bullets li:nth-child(n+3) { 
+                display: none; 
+            }
+
+            /* ensure skills are readable but not sprawling */
+            .skills-grid { 
+                grid-template-columns: repeat(2, 1fr); 
+            }
+
+            /* show only your top 4 projects in print */
+            .portfolio-grid .project-card:nth-of-type(n+5) { 
+                display: none; 
+            }
+
+            /* tighten project spacing */
+            .project-card { 
+                margin-bottom: 6px; 
+                padding: 8px;
+            }
+
+            /* hide lower-signal categories in print to reduce sprawl */
+            .skill-category:nth-of-type(n+5) { 
+                display: none; /* keep AI/ML, Product, Cloud, Backend */
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+
+            /* kill emojis in print (cleaner + ATS-safer) */
+            .contact-info span { 
+                gap: 0; 
+            }
+            .contact-info .icon { 
+                display: none; 
+            }
+
+            /* prevent orphan breaks */
+            .experience-item, .project-card { 
+                break-inside: avoid; 
+            }
+
+            /* make links self-evident in printed PDFs */
+            a[href]::after { 
+                content: " (" attr(href) ")"; 
+                font-weight: normal; 
+                font-size: 9pt;
+            }
+
+            /* optional: one-pager export switch */
+            body.onepage .page:nth-of-type(2) { 
+                display: none; 
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page 1: Professional Experience -->
+    <div class="page">
+        <header class="header">
+            <div class="name">Ron Schmidt</div>
+            <div class="title">AI Product Manager (hands-on builder)</div>
+            <div class="contact-info">
+                <span><span class="icon">📧</span> ronaldjschmidt85@gmail.com</span>
+                <span><span class="icon">📍</span> Tampa, FL</span>
+                <span><span class="icon">💼</span> linkedin.com/in/ronald-schmidt-12b54740</span>
+                <span><span class="icon">🌐</span> github.com/shmox11</span>
+            </div>
+        </header>
+
+        <div class="summary">
+            <strong>Summary:</strong> AI PM who ships. Led an enterprise pilot, designs eval loops/guardrails, and partners cross-functionally to hit KPIs.
+        </div>
+
+        <div class="two-column">
+            <div>
+                <section class="section">
+                    <h2 class="section-title">Professional Experience</h2>
+                    
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Founder & Solutions Architect</div>
+                                <div class="company">InovaCanvas</div>
+                            </div>
+                            <div class="location-date">
+                                Tampa, FL (Remote)<br>
+                                Oct 2023 - Present
+                            </div>
+                        </div>
+                        <div class="description">Architect and deliver innovative AI-driven solutions that transform creative challenges into scalable products, integrating advanced prompt engineering, multi-agent systems, and full-stack development.</div>
+                        <ul class="achievements">
+                            <li>Innovative Creations: Automated digital art generation using Midjourney and DALL·E with multi-agent pipeline for image analysis, product descriptions, SEO optimization, and Etsy API integration</li>
+                            <li>Diaper-Tracker: AI-powered solution using webcam images and GPT-4o Vision to count diaper inventory, with real-time dashboard, alerts, and predictive insights</li>
+                            <li>Living Resume: Interactive, context-aware AI-powered resume with robust CI/CD pipeline and custom documentation</li>
+                            <li>Clypit: AI-driven video clipping system using YOLO-based object detection with custom event-sequencing algorithm for key moment extraction</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Loyalty Sales and Retention Agent</div>
+                                <div class="company">Anthem Inc</div>
+                            </div>
+                            <div class="location-date">
+                                Tampa, FL<br>
+                                May 2021 - Present
+                            </div>
+                        </div>
+                        <div class="description">Provided high-level member advocacy and technical support while leading innovative AI initiatives including Spark Hub (designated pilot lead for Q4 2025 launch) and HiPer system development.</div>
+                        <ul class="achievements">
+                            <li>Spark Hub: designated pilot lead for 90-day AI initiative; 99% accuracy (175 tests); 10-12 hours saved weekly; Q4 2025 launch target.</li>
+                            <li>HiPer: shipped redesign next sprint; screens 7 → 3; reduced AHT/CTMs.</li>
+                            <li>Hit 100% of KPIs within 90 days; created workflows that cut handle time.</li>
+                        </ul>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Facilitated Enroller / Interim Supervisor</div>
+                                <div class="company">Independent Health</div>
+                            </div>
+                            <div class="location-date">
+                                Buffalo, NY<br>
+                                Jul 2018 - May 2021
+                            </div>
+                        </div>
+                        <div class="description">Managed enrollment processes and led team initiatives while adapting to pandemic challenges.</div>
+                        <ul class="achievements">
+                            <li>Led Salesforce Lightning test pilot, implementing necessary fields for reporting</li>
+                            <li>Analyzed custom pivot table data that led to Essential Plan Plus implementation, decreasing lost enrollments by 90%</li>
+                            <li>Created and maintained the new hire training playbook while actively participating in onboarding</li>
+                            <li>Successfully adapted to remote work during pandemic, increasing enrollments and developing digital tools</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+
+            <div>
+                <section class="section">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>AI & ML</h4>
+                            <div class="skill-list">LLM Integration, Prompt Engineering, Computer Vision, GPT-4 Vision, Multi-Agent Systems, RAG Systems</div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Frontend</h4>
+                            <div class="skill-list">React, JavaScript, Tailwind CSS, Framer Motion, Responsive Design, React Native</div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Backend</h4>
+                            <div class="skill-list">Python, FastAPI, Node.js, PostgreSQL, Firebase, Cloud Functions, API Development</div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Cloud & DevOps</h4>
+                            <div class="skill-list">AWS, Google Cloud, CI/CD, Infrastructure as Code, Serverless, Docker</div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Product & Strategy</h4>
+                            <div class="skill-list">Technical Product Strategy, System Design, Architecture Planning, User Experience</div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Automation</h4>
+                            <div class="skill-list">Workflow Optimization, Process Improvement, CRM Systems, HIPAA Compliance</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">AWS Certifications</h2>
+                    <div class="certifications">
+                        <div class="cert-item">
+                            <div class="cert-name">AWS SysOps Administrator</div>
+                            <div class="cert-date">June 2022</div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-name">AWS Developer Associate</div>
+                            <div class="cert-date">May 2022</div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-name">AWS Solutions Architect</div>
+                            <div class="cert-date">April 2022</div>
+                        </div>
+                        <div class="cert-item">
+                            <div class="cert-name">AWS Cloud Practitioner</div>
+                            <div class="cert-date">August 2021</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Education & Background</h2>
+                    <div class="experience-item">
+                        <div class="job-header">
+                            <div>
+                                <div class="job-title">Sales and Leasing Consultant</div>
+                                <div class="company">West Herr</div>
+                            </div>
+                            <div class="location-date">
+                                Buffalo, NY<br>
+                                Jun 2014 - Jul 2018
+                            </div>
+                        </div>
+                        <ul class="achievements">
+                            <li>Exceeded sales goals with 18 units 3-month rolling average (National average is 12)</li>
+                            <li>Achieved 200 Club Member status</li>
+                            <li>Created pre-owned vehicle repair form and process</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page 2: Portfolio Projects -->
+    <div class="page">
+        <header class="header">
+            <div class="name">Ron Schmidt</div>
+            <div class="title">Portfolio Projects & Technical Achievements</div>
+        </header>
+
+        <div class="summary">
+            <strong>Methodology:</strong> AI-assisted, artifact-first workflow (one-pagers, eval loops, guardrails) to ship measurable outcomes fast.
+        </div>
+
+        <section class="section">
+            <h2 class="section-title">Enterprise AI Initiatives - Anthem BCBS</h2>
+            <div class="portfolio-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-name">Spark Hub</div>
+                        <div class="project-tagline">AI knowledge base – 85% faster lookup</div>
+                        <span class="project-status status-pilot">Q4 2025 Launch</span>
+                    </div>
+                    <div class="project-description">
+                        Centralized AI dashboard for call center agents targeting Q4 2025 launch. As designated pilot lead, orchestrating 90-day pilot to transform how agents access critical information - from scattered PDFs to instant AI assistants for Phone Directory, SEP Eligibility, and Process Guides.
+                    </div>
+                    <div class="project-bullets">
+                        <ul>
+                            <li>99% answer accuracy (175 test scenarios)</li>
+                            <li>3 min → 30s lookup time reduction</li>
+                            <li>10-12 agent hours saved weekly on misrouted calls</li>
+                            <li>90-day pilot approved, Q4 2025 target launch</li>
+                        </ul>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Natural Language Processing</span>
+                        <span class="tech-tag">Knowledge Base Search</span>
+                        <span class="tech-tag">API Development</span>
+                        <span class="tech-tag">Performance Testing</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-name">HiPer UX Rescue</div>
+                        <div class="project-tagline">24-h UI redesign implemented next sprint</div>
+                        <span class="project-status status-adopted">Adopted</span>
+                    </div>
+                    <div class="project-description">
+                        Rapid UX intervention that transformed a complex multi-screen workflow into a streamlined interface. Delivered wireframes and design specifications that were immediately adopted and shipped in the following sprint.
+                    </div>
+                    <div class="project-bullets">
+                        <ul>
+                            <li>Wireframe cut screens 7 → 3</li>
+                            <li>Vendor shipped design in next sprint</li>
+                        </ul>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Wireframing</span>
+                        <span class="tech-tag">User Flow Design</span>
+                        <span class="tech-tag">Rapid Prototyping</span>
+                        <span class="tech-tag">Design Systems</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">InovaCanvas Projects - Personal AI Ventures</h2>
+            <div class="portfolio-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-name">Innovative Creations</div>
+                        <div class="project-tagline">Fully automated AI-to-Etsy product creation workflow</div>
+                        <span class="project-status status-complete">Complete</span>
+                    </div>
+                    <div class="project-description">
+                        End-to-end AI workflow that generates product images with Midjourney, creates detailed descriptions, optimizes listings for SEO, and publishes to Etsy automatically. Includes custom image mockup generation for improved sales.
+                    </div>
+                    <div class="project-bullets">
+                        <ul>
+                            <li>Fully automated system from image generation to Etsy listing</li>
+                            <li>Significantly reduced time to market for new products</li>
+                            <li>Improved listing quality and SEO performance</li>
+                        </ul>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Midjourney</span>
+                        <span class="tech-tag">LLM Agent Orchestration</span>
+                        <span class="tech-tag">Etsy API</span>
+                        <span class="tech-tag">SEO Tools</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-name">Clypit</div>
+                        <div class="project-tagline">AI-powered video game highlight detection and clipping tool</div>
+                        <span class="project-status status-in-progress">In Progress</span>
+                    </div>
+                    <div class="project-description">
+                        Custom-trained computer vision model that processes video game footage to detect key events and automatically generate highlight reels. Users can select, adjust and export clips for content creation.
+                    </div>
+                    <div class="project-bullets">
+                        <ul>
+                            <li>Successfully detects key game events with high accuracy</li>
+                            <li>Reduces hours of manual video editing to minutes</li>
+                            <li>Created a practical tool for content creators</li>
+                        </ul>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">Custom ML Models</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-name">utterly Measured</div>
+                        <div class="project-tagline">AI-assisted breast milk tracking and advice system</div>
+                        <span class="project-status status-complete">Complete</span>
+                    </div>
+                    <div class="project-description">
+                        Comprehensive breast pumping app that uses computer vision to measure pumped milk volume. Integrates with an LLM to provide personalized advice based on tracking data.
+                    </div>
+                    <div class="project-bullets">
+                        <ul>
+                            <li>Complete, functional app for breast milk tracking</li>
+                            <li>Personalized guidance based on individual progress</li>
+                            <li>Comprehensive data analytics for tracking trends</li>
+                        </ul>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Computer Vision</span>
+                        <span class="tech-tag">LLM Integration</span>
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Chart.js</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-name">Firebase Framework</div>
+                        <div class="project-tagline">Prompt-engineered framework for rapid Firebase app deployment</div>
+                        <span class="project-status status-complete">Complete</span>
+                    </div>
+                    <div class="project-description">
+                        Streamlined framework with specialized instructions allowing LLMs to launch fully functioning web apps on Google Firebase with minimal prompting. Reduced deployment from 5+ prompts to just 3 prompts.
+                    </div>
+                    <div class="project-bullets">
+                        <ul>
+                            <li>Reduced app deployment process from 5+ prompts to 3</li>
+                            <li>Successfully used to create multiple production applications</li>
+                            <li>Created reusable framework for rapid application development</li>
+                        </ul>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Prompt Engineering</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">LLM Integration</span>
+                        <span class="tech-tag">Automated Deployment</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-name">Living Resume</div>
+                        <div class="project-tagline">Interactive AI-powered resume with chatbot integration</div>
+                        <span class="project-status status-in-progress">In Progress</span>
+                    </div>
+                    <div class="project-description">
+                        Modern, interactive resume with a context-aware chatbot that can answer questions about qualifications, skills, and projects. Features a responsive design, interactive timeline, and source citation for enhanced credibility.
+                    </div>
+                    <div class="project-bullets">
+                        <ul>
+                            <li>Fully functional interactive resume with chatbot integration</li>
+                            <li>Rapid development completed in approximately 3 hours</li>
+                            <li>Professional showcase of technical and AI skills</li>
+                        </ul>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">RAG Systems</span>
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">FastAPI</span>
+                        <span class="tech-tag">Vector Database</span>
+                        <span class="tech-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-name">Diaper Tracker</div>
+                        <div class="project-tagline">Computer vision inventory management for baby essentials</div>
+                        <span class="project-status status-prototype">Prototype</span>
+                    </div>
+                    <div class="project-description">
+                        Smart system that uses a camera and GPT-4 Vision to monitor diaper inventory levels automatically. Takes scheduled photos, counts remaining diapers, and sends alerts when supply is running low.
+                    </div>
+                    <div class="project-bullets">
+                        <ul>
+                            <li>Functional prototype that successfully counts diapers</li>
+                            <li>Automated inventory tracking without manual counting</li>
+                            <li>Prevents emergency diaper shortages</li>
+                        </ul>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">GPT-4 Vision</span>
+                        <span class="tech-tag">Image Recognition</span>
+                        <span class="tech-tag">React Native</span>
+                        <span class="tech-tag">Node.js</span>
+                        <span class="tech-tag">Automation</span>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-name">Tiny Triumphs</div>
+                        <div class="project-tagline">Baby milestone tracker built with Firebase Framework</div>
+                        <span class="project-status status-in-progress">In Progress</span>
+                    </div>
+                    <div class="project-description">
+                        Baby milestone tracking application built using the Firebase Framework. Created in a single deployment shot with minimal additional prompts for refinement. Practical application of the framework methodology.
+                    </div>
+                    <div class="project-bullets">
+                        <ul>
+                            <li>Functional milestone tracking application</li>
+                            <li>Created in record time using the framework</li>
+                            <li>Validation of the Firebase Framework approach</li>
+                        </ul>
+                    </div>
+                    <div class="tech-tags">
+                        <span class="tech-tag">React</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">Cloud Firestore</span>
+                        <span class="tech-tag">LLM-Generated Code</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" style="margin-top: 15px;">
+            <h2 class="section-title">Key Achievements & Impact</h2>
+            <div style="font-size: 10pt; line-height: 1.4;">
+                <p><strong>Technical Innovation:</strong> Designed and implemented AI systems with measurable impact including 85% faster information lookup, 90% reduction in lost enrollments, and automated workflows that save hours of manual work.</p>
+                <p style="margin-top: 8px;"><strong>Rapid Development:</strong> Leveraging AI-assisted development to create production-ready applications in record time, with comprehensive testing and documentation.</p>
+                <p style="margin-top: 8px;"><strong>Product Strategy:</strong> Successfully bridging technical implementation with business value, contributing to enterprise AI initiatives and creating user-centered solutions.</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
